@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body{
+            background: #030023;
+        }
+        header .navbar{
+            background: #0088e9 !important;
+        }
+        .nav-tabs{
+            border-bottom: none !important;
+        }
+        .nav-tabs .nav-link{
+            border:none !important;
+            background: inherit !important;
+            color: #030023 !important;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        @media (min-width:850px){
+            .nav-tabs .nav-link{
+                font-size: 22px;
+                font-weight: 400;
+            }
+        }
+        .nav-tabs .nav-link:active{
+            border:none !important;
+            background: inherit !important;
+            color: white !important;
+        }
+        .nav-tabs .nav-link:hover{
+            text-decoration: none !important;
+        }
+        .navbar-toggler-icon{
+            filter:invert(1);
+        }
+        header .navbar ul li a{
+            position: relative;
+            display: inline-block;
+        }
+        header .navbar ul li a::after{
+            content: " ";
+            display: block;
+            position: absolute;
+            left:55%;
+            width: 0%;
+            height: 3px;
+            bottom: -3px;
+            background: white;
+            border-radius: 40px;
+            z-index:2;
+            transition: width 0.5s;
+            transform: translateX(-50%);
+        }
+        header .navbar ul li a:hover::after{
+            width:100%;
+            z-index: 2;
+        }
+        header .navbar ul li a:hover{
+            color: white !important;
+        }
+        header .navbar ul li a:focus{
+            color: white !important;
+        }
+        .front{
+            color: #0088e9;
+            text-shadow:0 0 6px #0088e9;
+        }
+        .btn-primary{
+            background: #0088e9 !important;
+            font-size: 18px;   
+        }
+        .btn-primary:hover{
+            box-shadow: 0 0 18px #0088e9;
+        }
+        #home .nav a:hover{
+            color: white !important;
+            background: #0088e9 !important;
+            box-shadow: 0 0 15px #0088e9 !important;
+        }
+        #home .modal .modal-dialog .modal-content{
+            background: #030023 !important;
+            box-shadow:0 0 25px #0088e9;
+            border-radius: 10px !important;
+        }
+        #home .modal .modal-dialog .modal-content img{
+            box-shadow:0 0 20px #0088e9;
+            border-radius: 10px;
+        }
+        #home .card{
+            border:none !important;
+            background: #030023 !important;
+        }
+        #home .card img{
+            width:320px;
+            height: 320px;
+            outline: 4px solid #0088e9;
+            box-shadow: 0 0 25px #0088e9;
+        }
+        #about .media img{
+            width:160px;
+            height: 160px;
+            border-radius: 50%;
+            outline: 3px solid #0088e9;
+            box-shadow: 0 0 20px #0088e9;
+        }
+        #about .card .card-header{
+            background: #030023 !important;
+            border: none !important;
+            cursor: pointer;
+        }
+        #about .card .card-body{
+            background: #030023;
+            border: none !important;
+        }
+        #about .card{
+            border: none !important;
+            margin-bottom: 5px;
+        }
+        #about .container-fluid{
+            border-left:2px solid #707070;
+        }
+        #about .card .card-header h3{
+            position: relative;
+        }
+        #about .card .card-header h3::before{
+            content: " ";
+            position:absolute;
+            width:20px;
+            height: 20px;
+            border-radius: 50%;
+            right: calc(100% + 19px);
+            top:0;
+            background-color: #0088e9 !important;
+            border: 1px solid #fff;
+        }
+        #services .card{
+            border-color: #3e3e3e !important;
+            background: #030023 !important;
+        }
+        #services .card:hover{
+            box-shadow: 0 0 20px #0088e9 !important;
+        }
+        #about #accordian{
+            padding-top: 100px;
+        }
+        #services{
+            padding-top:95px;
+            padding-bottom: 100px;
+        }
+        #services .htxt{
+            padding-bottom: 30px;
+        }
+        #services .text-b{
+            color: #030023 !important;
+        }
+        #services .modal .modal-dialog .modal-content{
+            border-radius: 20px !important;
+            box-shadow: 0 0 30px #0088e9 !important;
+        }
+        #projects .card{
+            border: none !important;
+            border-radius: 7px;
+            overflow: hidden;
+            position: relative;
+        }
+        #projects .card:hover{
+            box-shadow: 0 0 20px #0088e9 !important;
+        }
+        #projects .card img{
+            aspect-ratio: 3/2;
+            object-fit: fill;
+            border-radius: 7px;
+        }
+        #projects{
+            padding-top: 60px;
+        }
+        #projects .card .layer{
+            background: transparent;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top:0;
+            left:0;
+            transition: 0.5s;
+        }
+        .layer:hover{
+            background: rgba(0, 136, 233,0.7) !important;
+        }
+        .layer h4{
+            width: 100%;
+            font-size: 20px;
+            bottom: -17%;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: 0.5s;
+            position: absolute;
+        }
+        .layer:hover h4{
+            bottom: 40%;
+            opacity: 1;
+        }
+        #contact{
+            padding-top: 90px;
+            padding-bottom: 60px;
+        }
+        #contact form{
+            padding-top: 70px;
+        }
+        #contact form input,#contact form textarea{
+            background: #030023 !important;
+            color: white;
+            border: 1px solid #3e3e3e !important;
+            box-shadow:0 0 3px #0088e9 !important;
+        }
+        #contact form input:hover,#contact form textarea:hover{
+            box-shadow: 0 0 20px #0088e9 !important;
+        }
+        #contact form input:focus,#contact form textarea:focus{
+            box-shadow: 0 0 20px #0088e9 !important;
+        }
+        .txtf{
+            color: #fff4a3 !important;
+        }
+        footer{
+            background: url("footer-bg.webp") no-repeat;
+            background-size: cover;
+        }
+        footer input{
+            background: url("footer-bg.webp")no-repeat;
+            background-size: cover;
+            border:#3e3e3e !important;
+            box-shadow:0 0 4px #fff4a3;
+            color: white !important;
+        }
+        footer input:hover{
+            box-shadow: 0 0 20px #fff4a3 !important;
+        }
+        footer input:focus{
+            box-shadow: 0 0 20px #fff4a3 !important;
+        }
+        .input-group-text{
+            color: black !important;
+        }
+        footer button{
+            background: #fff4a3 !important;
+            outline: 1px solid #fff4a3 !important;
+            box-shadow: 0 0 20px #fff4a3 !important;
+        }
+        footer .nav a:hover{
+            text-shadow: 0 0 15px #fff4a3 !important;
+        }
+    </style>
+</head>
+<body>
+    <!--header start-->
+    <header>
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+            <a href="#home" class="navbar-brand pl-5"><h2>Narsimha Pogiri</h2></a>
+            <button class="navbar-toggler"><span class="navbar-toggler-icon"data-toggle="collapse"data-target="#demo"></span></button>
+            <div class="collapse navbar-collapse  mr-md-5"id="demo">
+                <ul class="navbar-nav nav nav-tabs ml-auto">
+                    <li class="nav-item px-lg-2"><a href="#home" class="nav-link active text-black"data-toggle="tab">Home</a></li>
+                    <li class="nav-item px-lg-2"><a href="#about" class="nav-link text-black"data-toggle="tab">About</a></li>
+                    <li class="nav-item px-lg-2"><a href="#services" class="nav-link text-black"data-toggle="tab">Services</a></li>
+                    <li class="nav-item px-lg-2"><a href="#projects" class="nav-link text-black"data-toggle="tab">Projects</a></li>
+                    <li class="nav-item px-lg-2"><a href="#contact" class="nav-link text-black"data-toggle="tab">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!--header end-->
+    <!--main start-->
+    <main class="container-fluid tab-content mx-auto">
+        <!--home start-->
+        <section id="home"class="tab-pane active mt-sm-5 mt-5">
+            <div class="row align-content-center vh-100 mx-auto pl-lg-4">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12 pl-lg-5">
+                    <h4 class="text-white">Hi, Myself</h4>
+                    <h2 class="text-white">Narsimha Pogiri</h2>
+                    <h4 class="text-white">And I'm a <span class="front">Frontend Developer</span></h4>
+                    <p class="text-white">Passionate Front-End Developer specializing in creating responsive, user-friendly web interfaces. Proficient in HTML, CSS, JavaScript, and modern frameworks like Bootstrap(framework).</p>
+                    <ul class="nav pl-2 mt-1">
+                        <li class="nav-item"><a target="_blank" href="https://www.facebook.com/share/15oRKe5m3e/"class="nav-link text-primary border border-primary rounded-circle mx-2"><i class="fa-brands fa-facebook"></i></a></li>
+                        <li class="nav-item"><a target="_blank" href="https://www.google.com/search?q=dabbulu+kavali&rlz=1C1MMCH_enIN1129IN1130&oq=dabb&gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTIGCAEQRRg7Mg0IAhAuGNQCGLEDGIAEMg0IAxAuGNQCGLEDGIAEMg0IBBAuGIMBGLEDGIAEMgoIBRAuGLEDGIAEMgcIBhAAGIAEMgoIBxAAGLEDGIAEMgcICBAAGIAEMgcICRAAGI8C0gEJMzExNGowajE1qAIIsAIB8QX6Q5wGnJLSXPEF-kOcBpyS0lw&sourceid=chrome&ie=UTF-8"class="nav-link text-primary border border-primary rounded-circle mx-2"><i class="fa-brands  fa-twitter"></i></a></li>
+                        <li class="nav-item"><a target="_blank" href="https://www.instagram.com/narasimha_pogiri?igsh=d2pqanZ6bzJqbnBq"class="nav-link text-primary border border-primary rounded-circle mx-2"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li class="nav-item"><a target="_blank" href="https://www.linkedin.com/in/pogiri-venkata-narsimhulu-94982334a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="nav-link text-primary border border-primary rounded-circle mx-2"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                    </ul>
+                    <button class="btn btn-primary ml-5 px-5 mt-3"data-toggle="modal"data-target="#resume">Resume</button>
+                    <div class="modal fade"id="resume">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content p-4">
+                                <div class="modal-body">
+                                    <button class="close text-white mb-3"data-dismiss="modal">&times</button>
+                                    <img class="img-fluid" src="resume-portfolio.png" alt="resume">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-sm-5  mt-md-n5 mt-lg-n5">
+                    <div class="card mt-sm-5 mt-5 mb-5">
+                        <img src="venky.jpeg" alt="profile" class="img-fluid rounded-circle mx-auto">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--home end-->
+        <!--about start-->
+        <section id="about"class="tab-pane fade container pb-5">
+            <div class="media mt-5 mb-3">
+                <img src="venky.jpeg" alt="venky"class="img-fluid mr-3 align-self-center">
+                <div class="media-body">
+                    <h2 class="text-white pb-2">Pogiri Venkata Narsimhulu</h2>
+                    <h3 class="text-white pb-1">I'm a <span class="text-primary">Frontend Developer</span></h3>
+                    <p class="text-white pr-4">I am 20 years old.I'm from Srikakulam.Passionate Front-End Developer specializing in creating responsive, user-friendly web interfaces. Proficient in HTML, CSS, JavaScript, and modern frameworks like Bootstrap(framework).</p>
+                </div>
+            </div>
+            <h2 class="text-white">Education info: </h2>
+            <div id="accordion"class="container-fluid pl-2">
+                <div class="card">
+                  <div class="card-header"data-toggle="collapse"data-target="#btech">
+                    <h3 class="text-primary"> <i class="fa-solid fa-computer"></i> Graduation</h3>
+                  </div>
+                  <div id="btech" class="collapse show" data-parent="#accordion">
+                    <div class="card-body">
+                       <h4 class="text-white"> Engineering</h4>
+                       <h4 class="text-white">Computer Science & Engineering</h4>
+                        <h5 class="text-white">Sep 2022 - July 2026</h5>
+                       <h6 class="text-white">Sri Venkateswara College of Engineering & Technologi Affiliated to JNTU-GV</h6>
+                        <p class="text-white">CGPA: 8.01</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header"data-target="#inter"data-toggle="collapse">
+                    <h3 class="text-primary"> <i class="fa-solid fa-flask"></i> Intermediate</h3>
+                  </div>
+                  <div id="inter" class="collapse" data-parent="#accordion">
+                    <div class="card-body">
+                        <h4 class="text-white">  Intermediate</h4>
+                       <h4 class="text-white">MPC</h4>
+                        <h5 class="text-white">2020 - 2022</h5>
+                       <h6 class="text-white">Govt Junior College Burja, Srikakulam</h6>
+                        <p class="text-white">CGPA: 7.49</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="card mb-5">
+                  <div class="card-header"data-target="#ssc"data-toggle="collapse">
+                    <h3 class="text-primary"> <i class="fa-solid fa-vial"></i> Secondary</h3>
+                  </div>
+                  <div id="ssc" class="collapse" data-parent="#accordion">
+                    <div class="card-body">
+                        <h4 class="text-white">secondary Education</h4>
+                       <h5 class="text-white">Secondary Education Syllabus</h5>
+                        <h5 class="text-white">2020</h5>
+                       <h6 class="text-white">Zilla Parishad High School,K.K.Rajapuram</h6>
+                        <p class="text-white">CGPA: 10</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--about end-->
+        <!--services start-->
+        <section id="services"class="tab-pane fade container">
+            <h2 class="text-white htxt text-center">My<span class="text-primary">Services</span></h2>
+            <div class="row mt-3">
+                <div class="col-lg-4 col-md-6 col-sm-12 col-12 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h1 class="text-center text-primary"><i class="fa-solid fa-code"></i></h1>
+                            <h3 class="card-title text-center text-primary">Web Developer</h3>
+                            <p class="card-text text-white">I specialize in responsive web development, creating dynamic and adaptive websites that deliver a seamless user experience across all devices. By leveraging modern technologies like CSS Grid, Flexbox, and media queries, I ensure that websites automatically adjust to different screen sizes without compromising functionality or aesthetics.</p>
+                            <button class="btn btn-primary py-2 px-3 d-block mx-auto"data-toggle="modal"data-target="#web">Read More</button>
+                            <div class="modal fade"id="web">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content p-4">
+                                        <div class="modal-header"> 
+                                            <h3 class="text-center text-primary"> <i class="fa-solid fa-code"></i> Responsive Web Developer</h3>
+                                            <button class="close text-black"data-dismiss="modal">&times</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="text-b">I specialize in responsive web development, creating dynamic and adaptive websites that deliver a seamless user experience across all devices. By leveraging modern technologies like CSS Grid, Flexbox, and media queries, I ensure that websites automatically adjust to different screen sizes without compromising functionality or aesthetics. My approach focuses on performance optimization, accessibility, and intuitive design, ensuring fast load times, smooth navigation, and a visually appealing interface. Whether it's a new project or enhancing an existing website, I develop solutions that are user-friendly, scalable, and optimized for all screen resolutions, providing a consistent experience across desktops, tablets, and mobile devices.</p>               
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 col-12 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h1 class="text-center text-primary"><i class="fa-regular fa-file-code"></i></h1>
+                            <h3 class="card-title text-center text-primary">Frontend Developer</h3>
+                            <p class="card-text text-white">I specialize in front-end web development, creating visually engaging and highly interactive websites that provide seamless user experiences. Using modern technologies like HTML, CSS, JavaScript, and frameworks such as React js, I build responsive and performance-optimized interfaces that work flawlessly across all devices. My focus is on efficient code</p>
+                            <button class="btn btn-primary py-2 px-3 d-block mx-auto"data-toggle="modal"data-target="#end">Read More</button>
+                            <div class="modal fade"id="end">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content p-4">
+                                        <div class="modal-header"> 
+                                            <h3 class="text-center text-primary"> <i class="fa-regular fa-file-code"></i> Frontend Developer</h3>
+                                            <button class="close text-black"data-dismiss="modal">&times</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="text-b">I specialize in front-end web development, creating visually engaging and highly interactive websites that provide seamless user experiences. Using modern technologies like HTML, CSS, JavaScript, and frameworks such as React and Vue.js, I build responsive and performance-optimized interfaces that work flawlessly across all devices. My focus is on clean, efficient code, ensuring fast load times, smooth navigation, and accessibility for all users. Whether developing from scratch or refining an existing design, I bring concepts to life with intuitive UI/UX, making websites not only functional but also aesthetically appealing and user-friendly.</p>               
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12 col-12 mb-5">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h1 class="text-center text-primary"><i class="fa-brands fa-java"></i></h1>
+                            <h3 class="card-title text-center text-primary">Java Developer</h3>
+                            <p class="card-text text-white">I specialize in front-end web development, creating visually engaging and highly interactive websites that provide seamless user experiences. Using modern technologies like HTML, CSS, JavaScript, and frameworks such as React and Vue.js, I build responsive and performance-optimized interfaces that work flawlessly across all devices.</p>
+                            <button class="btn btn-primary py-2 px-3 d-block mx-auto"data-toggle="modal"data-target="#java">Read More</button>
+                            <div class="modal fade"id="java">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content p-4">
+                                        <div class="modal-header"> 
+                                            <h3 class="text-center text-primary"> <i class="fa-brands fa-java"></i> Java Developer</h3>
+                                            <button class="close text-black"data-dismiss="modal">&times</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="text-b">I specialize in Java development, building robust, scalable, and efficient applications for web and software solutions. With expertise in core Java, Spring Boot, and other modern frameworks, I develop backend systems that ensure high performance, security, and seamless integration with databases and APIs. My focus is on writing clean, maintainable code that enhances functionality while optimizing speed and resource usage. Whether it's developing RESTful APIs, enterprise applications, or backend services, I create reliable and scalable Java solutions tailored to meet business needs.</p>               
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--services end-->
+        <!--projects start-->
+        <section id="projects"class="tab-pane fade container pb-5">
+            <h2 class="text-white pb-2 text-center">Latest <span class="text-primary"> Projects</span></h2>
+            <div class="row mt-3">
+                <div class="col-lg-4 col-md-6 col-sm-12 col-12 mb-3">
+                    <a href="#"><div class="card shadow-sm">
+                        <img src="responsive.jpeg" alt="home loan">
+                        <div class="layer">
+                            <h4 class="text-white text-center">HOME LOAN</h4>
+                        </div>
+                    </div></a>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 col-12 mb-3">
+                    <a href="#"><div class="card shadow-sm">
+                        <img src="zerodha.png" alt="zerodha">
+                        <div class="layer">
+                            <h4 class="text-white text-center">ZERODHA</h4>
+                        </div>
+                    </div></a>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12 col-12">
+                    <a href="#"><div class="card shadow-sm">
+                        <img src="intas.jpg" alt="intas">
+                        <div class="layer">
+                            <h4 class="text-white text-center">INTAS</h4>
+                        </div>
+                    </div></a>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-lg-4 col-md-6 col-sm-12 col-12 mb-3">
+                    <a href="#"><div class="card shadow-sm">
+                        <img src="responsivetwo.jpeg" alt="login">
+                        <div class="layer">
+                            <h4 class="text-white text-center">LOGIN</h4>
+                        </div>
+                    </div></a>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 col-12 mb-3">
+                    <a href="#"><div class="card shadow-sm">
+                        <img src="tourismimg.jpg" alt="tour">
+                        <div class="layer">
+                            <h4 class="text-white text-center">TOURISM</h4>
+                        </div>
+                    </div></a>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12 col-12">
+                    <a href="#"><div class="card shadow-sm">
+                        <img src="facebook.png" alt="facebook">
+                        <div class="layer">
+                            <h4 class="text-white text-center">FACEBOOK</h4>
+                        </div>
+                    </div></a>
+                </div>
+            </div>
+        </section>
+        <!--projects end-->
+
+        <!--contact start-->
+        <section id="contact"class="tab-pane fade container">
+            <h2 class="text-white text-center">Contact <span class="text-primary">Me</span></h2>
+            <form action="">
+                <div class="row">
+                    <div class="col">
+                        <input type="name" class="form-control" id="name"placeholder="Enter Your Name">   
+                    </div>
+                    <div class="col">
+                        <input type="email" class="form-control" id="email"placeholder="Enter Your email">   
+                    </div>
+                </div>
+                <textarea name="message"class="form-control mt-4"rows="7" id="message"placeholder="message"></textarea>
+                <button class="btn btn-primary d-block mx-auto py-2 w-50 mt-4"type="submit"onclick="fun()">Submit</button>
+            </form>
+        </section>
+        <!--contact end-->
+    </main>
+    <!--main end-->
+    <!--footer start-->
+    <footer class="p-5"id="footer">
+            <div class="row  pt-5 pb-5">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                    <h3 class="mb-2 text-white">About <span class="txtf">Me</span></h3>
+                    <p class="text-white ">Passionate Front-End Developer specializing in creating responsive, user-friendly web interfaces. Proficient in HTML, CSS, JavaScript, and modern frameworks like Bootstrap(framework).</p>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                    <h3 class="mb-2 text-white">Contact <span class="txtf">Me</span></h3>
+                    <p class="txtf">Address:</p>
+                    <p class="text-white">No.1-127 street pogiri's,<br>Srikakulam, AP</p>
+                    <p class="txtf">Phone:+91-9391285414 <br>Email:</p>
+                    <p class="text-white">venkypogiri05@gmail.com</p>
+                    <p class="txtf">For:1(2345)67890</p>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                    <h3 class="text-white mb-3">Find <span class="txtf">Me</span></h3>
+                    <ul class="nav mt-1 flex-column">
+                        <li class="nav-item"><a target="_blank" href="https://www.facebook.com/share/15oRKe5m3e/"class="nav-link txtf"><i class="fa-brands fa-facebook "></i> Facebook</a></li>
+                        <li class="nav-item"><a target="_blank" href="https://www.google.com/search?q=dabbulu+kavali&rlz=1C1MMCH_enIN1129IN1130&oq=dabb&gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTIGCAEQRRg7Mg0IAhAuGNQCGLEDGIAEMg0IAxAuGNQCGLEDGIAEMg0IBBAuGIMBGLEDGIAEMgoIBRAuGLEDGIAEMgcIBhAAGIAEMgoIBxAAGLEDGIAEMgcICBAAGIAEMgcICRAAGI8C0gEJMzExNGowajE1qAIIsAIB8QX6Q5wGnJLSXPEF-kOcBpyS0lw&sourceid=chrome&ie=UTF-8"class="nav-link txtf"><i class="fa-brands  fa-twitter "></i> Twittwe</a></li>
+                        <li class="nav-item"><a target="_blank" href="https://www.instagram.com/narasimha_pogiri?igsh=d2pqanZ6bzJqbnBq"class="nav-link txtf"><i class="fa-brands fa-instagram "></i> Instagram</a></li>
+                        <li class="nav-item"><a target="_blank" href="https://www.linkedin.com/in/pogiri-venkata-narsimhulu-94982334a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"class="nav-link txtf"><i class="fa-brands fa-linkedin-in "></i> LinkedIn</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                    <h3 class="text-white mb-3">Subscribe <span class="txtf">To</span></h3>
+                    <p class="text-white mb-3">Enter yor mail and Submit</p>
+                    <div class="input-group mt-3">
+                        <input class="form-control" type="email" placeholder="Enter your e-mail">
+                        <div class="input-group-append">
+                            <button class="input-group-text "onclick="fun()"><i class="fa-regular fa-envelope"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </footer>
+    <!--footer end-->
+
+
+
+    <script>
+        function fun(){
+            alert("Your Message receved Successfully")
+        }
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
